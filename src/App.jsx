@@ -1,35 +1,73 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ImageCard from './ImageCard';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const containerStyle = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '20px',
+    padding: '20px',
+    justifyItems: 'center',
+  };
+
+  const images = [
+    {
+      url: 'https://picsum.photos/300/200?1',
+      title: 'Morning Dew',
+      description: 'A serene morning scene.',
+      author: 'Jane Smith',
+      datetime: '2025-10-20',
+    },
+    {
+      url: 'https://picsum.photos/300/200?2',
+      title: 'Urban Light',
+      description: 'City lights at dusk.',
+      author: 'John Doe',
+      datetime: '2025-10-21',
+    },
+    {
+      url: 'https://picsum.photos/300/200?3',
+      title: 'Ocean Breeze',
+      description: 'Waves hitting the shore.',
+      author: 'Lisa Ray',
+      datetime: '2025-10-22',
+    },
+    {
+      url: 'https://picsum.photos/300/200?4',
+      title: 'Autumn Path',
+      description: 'Leaves covering the forest trail.',
+      author: 'Mark Lee',
+      datetime: '2025-10-23',
+    },
+    {
+      url: 'https://picsum.photos/300/200?5',
+      title: 'Night Sky',
+      description: 'Stars above the mountain.',
+      author: 'Emily Chen',
+      datetime: '2025-10-24',
+    },
+    {
+      url: 'https://picsum.photos/300/200?6',
+      title: 'Golden Hour',
+      description: 'Sunset over the valley.',
+      author: 'Alex Park',
+      datetime: '2025-10-25',
+    },
+  ];
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div style={containerStyle}>
+      {images.map((img, index) => (
+        <ImageCard
+          key={index}
+          url={img.url}
+          title={img.title}
+          description={img.description}
+          author={img.author}
+          datetime={img.datetime}
+        />
+      ))}
+    </div>
+  );
 }
 
-export default App
+export default App;
